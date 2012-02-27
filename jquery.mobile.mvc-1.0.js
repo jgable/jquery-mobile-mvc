@@ -1,5 +1,5 @@
 /* jquery.mobile.mvc.js 
-   Website - http://github.com/jacob4u2/jquery-mobile-mvc
+   Website - http://github.com/jgable/jquery-mobile-mvc
    By: Jacob Gable - http://jacob4u2.posterous.com
    License: Microsoft Public License / MIT
 */
