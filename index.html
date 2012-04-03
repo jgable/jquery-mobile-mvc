@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Jquery-mobile-mvc : jQuery Mobile MVC Plugin" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Jquery-mobile-mvc</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/jgable/jquery-mobile-mvc">Fork Me on GitHub</a>
+
+          <h1 id="project_title">Jquery-mobile-mvc</h1>
+          <h2 id="project_tagline">jQuery Mobile MVC Plugin</h2>
+
+          <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/jgable/jquery-mobile-mvc/zipball/master">Download this project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/jgable/jquery-mobile-mvc/tarball/master">Download this project as a tar.gz file</a>
+          </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>jQuery Mobile MVC Plugin</h1>
+
+<h2>Create MVC Style Handlers for your jQuery Mobile Pages</h2>
+
+<h3>Examples</h3>
+
+<pre><code>(function($) {
+
+// Create a base page...
+var basePage = {
+        name: "default",
+        show: function($page) {
+            log("showing the " + this.name + " page");
+
+            disco.trackPage(this.name, "demo");
+        }
+    },
+    // Our welcome page inherits from the basePage and adds a "create" handler.
+    welcomePage = $.extend({}, basePage, {
+        name: "welcome",
+        trackClick: function(name) {
+            // Track a button click
+            disco.trackEvent(this.name, "demo");
+        },
+        create: function($page) {
+            var self = this;
+
+            this.$aboutLink = $page.find("#aboutLink");
+            this.$installLink = $page.find("#installLink");
+            this.$contactLink = $page.find("#contactLink");
+
+            this.$aboutLink.click(function() { self.trackClick("aboutLink"); });
+            this.$installLink.click(function() { self.trackClick("installLink"); });
+            this.$contactLink.click(function() { self.trackClick("contactLink"); });
+        }
+    }),
+    // The about page.
+    aboutPage = $.extend({}, basePage, {
+        name: "about"
+    }),
+    // The contact page.
+    contactPage = $.extend({}, basePage, {
+        name: "contact",
+        create: function($page) {
+            $page.find("#mailLink").click(function() {
+                disco.trackEvent("mailLink", "demo");
+            });
+        }
+    });
+
+    // Export our pages to the 
+    $.extend($.mobile.mvc.pages, {
+        welcome: welcomePage,
+        about: aboutPage,
+        contact: contactPage
+    });
+
+})(jQuery);
+</code></pre>
+
+<p>Packaged up by <a href="http://jacob4u2.posterous.com">Jacob Gable</a>.</p>
+
+<p>This project is licensed under the Microsoft Public License (Ms-PL) and MIT License.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Jquery-mobile-mvc maintained by <a href="https://github.com/jgable">jgable</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
