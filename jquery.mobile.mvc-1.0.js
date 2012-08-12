@@ -39,9 +39,9 @@
 	
     if($.fn.on) {
 		// Use .on if it's available (jQuery 1.7) for performance (http://jsperf.com/jquery-live-vs-delegate-vs-on)
-		$(document).on("div[data-role*='dialog']", pageEvents, dialogHandler);
-		$(document).on("div[data-role*='page']", pageEvents, pageHandler);
-		$(document).on(".navLink", "click", navLinkHandler);
+		$(document).on(pageEvents, "div[data-role*='dialog']", dialogHandler);
+        	$(document).on(pageEvents, "div[data-role*='page']", pageHandler);
+        	$(document).on("click", ".navLink", navLinkHandler);
 	} else {
 		$("div[data-role*='dialog']").live(pageEvents, dialogHandler);
 		$("div[data-role*='page']").live(pageEvents, pageHandler);
